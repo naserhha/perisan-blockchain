@@ -1,95 +1,176 @@
 # PersianChain
 
-[English below | توضیحات فارسی در ادامه]
+> **یک بلاکچین آموزشی و ماژولار به زبان فارسی با پشتیبانی از قرارداد هوشمند**
 
 ---
 
-## معرفی پروژه (فارسی)
+## مقدمه
 
-**PersianChain** یک بلاکچین آموزشی و ماژولار به زبان فارسی است که با هدف آموزش مفاهیم اصلی بلاکچین، رمزنگاری، اجماع و شبکه همتا به همتا طراحی شده است. تمامی کدها، متغیرها و مستندات به زبان فارسی و با ساختار ماژولار پیاده‌سازی شده‌اند تا توسعه و یادگیری را برای فارسی‌زبانان ساده‌تر کند.
+**PersianChain** یک پروژه بلاکچین متن‌باز و آموزشی است که با هدف آموزش مفاهیم پایه و پیشرفته بلاکچین، رمزنگاری، اجماع، شبکه همتا به همتا و قرارداد هوشمند به زبان فارسی توسعه یافته است. این پروژه با ساختار ماژولار و مستندات کامل، بستری مناسب برای یادگیری، توسعه و آزمایش ایده‌های بلاکچینی برای فارسی‌زبانان فراهم می‌کند.
 
-### ویژگی‌ها
-- هسته بلاکچین با امضای دیجیتال و رمزنگاری کلید عمومی-خصوصی
-- شبکه همتا به همتا (P2P) برای ارتباط بین نودها
-- استخر تراکنش‌های تاییدنشده (Mempool)
-- مدیریت و تخصیص کارمزد تراکنش‌ها
-- الگوریتم اجماع اثبات سهام (PoS)
-- مدیریت حساب‌ها و موجودی کاربران
-- بلاک اکسپلورر و API ساده با Flask
-- مدیریت فورک و انتخاب زنجیره معتبرتر
-- تست واحد (Unit Test) برای بخش‌های اصلی
-- ماژول امنیت و رمزنگاری داده‌های حساس و مقابله با دوبار خرج کردن
+---
 
-### ساختار ماژولار
-هر قابلیت در یک فایل جداگانه پیاده‌سازی شده و به راحتی قابل توسعه و اتصال به یکدیگر است.
+## معماری و ساختار پروژه
 
-### نصب پیش‌نیازها
+- **Backend:** پیاده‌سازی هسته بلاکچین، اجماع، مدیریت حساب، استخر تراکنش، امنیت و قرارداد هوشمند با Python و FastAPI
+- **Frontend:** داشبورد مدیریتی و بلاک اکسپلورر با React و React Router
+- **ساختار ماژولار:** هر قابلیت (بلاکچین، حساب، تراکنش، mempool، اجماع، امنیت، قرارداد هوشمند و...) در یک ماژول جداگانه
 
-```bash
-pip install flask ecdsa cryptography
+### ساختار پوشه‌ها
+```
+perisan-blockchain/
+  backend/
+    main.py
+    api/
+      blockchain.py
+      accounts.py
+      transactions.py
+      mempool.py
+      fee.py
+      consensus.py
+      security.py
+      smart_contract.py
+      ...
+  smart_contract.py
+  ...
+  frontend/
+    src/
+      components/
+        ...
+      api/
+        api.js
+      App.js
+      ...
 ```
 
-### اجرای بلاک اکسپلورر و API
+---
 
+## راه‌اندازی سریع
+
+### پیش‌نیازها
+- Python 3.8+
+- Node.js 16+
+
+### نصب Backend
 ```bash
-python explorer_api.py
+pip install fastapi uvicorn flask ecdsa cryptography
+```
+
+### نصب Frontend
+```bash
+cd frontend
+npm install
+npm install react-router-dom chart.js react-chartjs-2
+```
+
+### اجرای Backend
+```bash
+uvicorn backend.main:app --reload
+```
+
+### اجرای Frontend
+```bash
+cd frontend
+npm start
 ```
 
 ### اجرای تست واحد
-
 ```bash
 python test_persianchain.py
 ```
 
-### اطلاعات نویسنده
+---
 
-- Mohammad Nasser Haji Hashemabad
+## مستندات API
+
+### بلاکچین
+- `GET /blockchain/blocks` — دریافت لیست بلاک‌ها
+- `GET /blockchain/transactions` — دریافت لیست تراکنش‌ها
+- `POST /blockchain/transactions` — افزودن تراکنش جدید
+- `GET /blockchain/accounts` — دریافت لیست حساب‌ها
+- `POST /blockchain/accounts` — افزودن حساب جدید
+- `GET /blockchain/mempool` — مشاهده استخر تراکنش‌ها
+- `POST /blockchain/mempool` — افزودن تراکنش به استخر
+- `POST /blockchain/mempool/clear` — پاکسازی استخر تراکنش‌ها
+
+### امنیت و رمزنگاری
+- `POST /blockchain/security/encrypt` — رمزنگاری داده
+- `POST /blockchain/security/decrypt` — رمزگشایی داده
+- `POST /blockchain/security/double_spend` — بررسی دوبار خرج کردن
+
+### قرارداد هوشمند
+- `POST /blockchain/smartcontract/register` — ثبت قرارداد جدید (body: نام سازنده)
+- `GET /blockchain/smartcontract/list` — لیست قراردادها
+- `POST /blockchain/smartcontract/execute/{id}` — اجرای قرارداد (body: پارامترهای ورودی)
+
+---
+
+## مثال استفاده از قرارداد هوشمند
+
+### ثبت قرارداد جدید
+```http
+POST /blockchain/smartcontract/register
+Content-Type: application/json
+
+"سازنده۱"
+```
+
+### لیست قراردادها
+```http
+GET /blockchain/smartcontract/list
+```
+
+### اجرای قرارداد (جمع دو عدد)
+```http
+POST /blockchain/smartcontract/execute/1
+Content-Type: application/json
+
+{
+  "a": 5,
+  "b": 7
+}
+```
+خروجی:
+```json
+{
+  "خروجی": 12,
+  "وضعیت": {"آخرین_جمع": 12}
+}
+```
+
+---
+
+## توسعه و مشارکت
+
+- کدها و مستندات کاملاً فارسی و قابل توسعه هستند.
+- برای افزودن قرارداد هوشمند جدید، کافی است یک تابع پایتونی با امضای `(وضعیت, ورودی)` بنویسید و آن را به مدیریت قراردادها اضافه کنید.
+- برای توسعه frontend، کامپوننت‌های React را گسترش دهید یا صفحات جدید بسازید.
+- تست‌های واحد و یکپارچه را با `python test_persianchain.py` اجرا کنید.
+
+### مشارکت
+- Pull Request و Issueهای شما برای بهبود پروژه بسیار ارزشمند است.
+- لطفاً قبل از ارسال PR، تست‌ها را اجرا و مستندات را به‌روزرسانی کنید.
+
+---
+
+## نویسنده و ارتباط
+
+- Mohammad Nasser Haji Hashemabad محمد ناصر حاجی هاشم آباد
 - [LinkedIn](https://ir.linkedin.com/in/nasserhaji)
 - [GitHub](https://github.com/nasserhaji)
 - [Website](https://mohammadnasser.com/)
 
 ---
 
-## Project Introduction (English)
+## English Summary
 
-**PersianChain** is an educational and modular blockchain project in Persian (Farsi), designed to teach the core concepts of blockchain, cryptography, consensus, and peer-to-peer networking. All code, variables, and documentation are in Persian, making it ideal for Farsi-speaking learners and developers.
+**PersianChain** is a modular, open-source educational blockchain in Persian, featuring digital signature, P2P, mempool, PoS, security, and smart contract support. The project is fully documented and ready for extension and experimentation.
 
-### Features
-- Blockchain core with digital signature and public/private key cryptography
-- Peer-to-peer (P2P) networking between nodes
-- Mempool for unconfirmed transactions
-- Transaction fee management and allocation
-- Proof of Stake (PoS) consensus algorithm
-- Account and balance management
-- Simple block explorer and API with Flask
-- Fork management and longest chain selection
-- Unit tests for main modules
-- Security module for sensitive data encryption and double-spending prevention
+- Backend: Python (FastAPI)
+- Frontend: React (SPA)
+- Smart contract API: Register, list, and execute contracts
+- All code and docs in Persian for Farsi-speaking learners
 
-### Modular Structure
-Each feature is implemented in a separate file/module, making the project easy to extend and integrate.
+---
 
-### Requirements
-
-```bash
-pip install flask ecdsa cryptography
-```
-
-### Run Block Explorer & API
-
-```bash
-python explorer_api.py
-```
-
-### Run Unit Tests
-
-```bash
-python test_persianchain.py
-```
-
-### Author
-
-- Mohammad Nasser Haji Hashemabad
-- [LinkedIn](https://ir.linkedin.com/in/nasserhaji)
-- [GitHub](https://github.com/nasserhaji)
-- [Website](https://mohammadnasser.com/) 
+> برای هرگونه سوال یا همکاری، از طریق لینکدین یا گیت‌هاب با من در ارتباط باشید. 
