@@ -172,5 +172,15 @@ Content-Type: application/json
 - All code and docs in Persian for Farsi-speaking learners
 
 ---
+## 📜 License
+
+This project is licensed under a **Custom NonCommercial Attribution License**.
+
+- ✅ Free to use, modify, and share for **non-commercial** and **educational** purposes
+- ❌ **Commercial use, resale, or monetization** is strictly prohibited without prior written consent
+- 📛 Attribution required: Developed by Mohammad Nasser Haji Hashemabad (https://mohammadnasser.com)
+
+📬 For commercial licensing or inquiries: [info@mohammadnasser.com](mailto:info@mohammadnasser.com)
+
 
 > برای هرگونه سوال یا همکاری، از طریق لینکدین یا گیت‌هاب با من در ارتباط باشید. 
