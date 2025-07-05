@@ -1,3 +1,14 @@
+/**
+ * Project: Perisan Blockchain
+ * Author: Mohammad Nasser Haji Hashemabad
+ * License: Custom NonCommercial Attribution License (v1.0 - July 2025)
+ * Website: https://mohammadnasser.com
+ * Email: info@mohammadnasser.com
+ *
+ * This code is free for non-commercial use only.
+ * Commercial use, redistribution, or monetization requires written permission.
+ */
+
 # ماژول مدیریت وضعیت حساب‌ها و موجودی برای PersianChain
 # نویسنده: Mohammad Nasser Haji Hashemabad
 # توضیحات: این ماژول مدیریت حساب‌ها و موجودی کاربران را انجام می‌دهد.
