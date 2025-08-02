@@ -156,8 +156,8 @@ Content-Type: application/json
 ## نویسنده و ارتباط
 
 - Mohammad Nasser Haji Hashemabad محمد ناصر حاجی هاشم آباد
-- [LinkedIn](https://ir.linkedin.com/in/nasserhaji)
-- [GitHub](https://github.com/nasserhaji)
+- [LinkedIn](https://ir.linkedin.com/in/naserhha)
+- [GitHub](https://github.com/naserhha)
 - [Website](https://mohammadnasser.com/)
 
 ---
