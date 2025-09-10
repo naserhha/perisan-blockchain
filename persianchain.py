@@ -1,8 +1,8 @@
 # نام پروژه: PersianChain
 # نام فایل: persianchain.py
 # نویسنده: Mohammad Nasser Haji Hashemabad
-# لینکدین: https://ir.linkedin.com/in/nasserhaji
-# گیت‌هاب: https://github.com/nasserhaji
+# لینکدین: https://ir.linkedin.com/in/naserhha
+# گیت‌هاب: https://github.com/naserhha
 # وب‌سایت: https://mohammadnasser.com/ 
 # بلاکچین ساده به زبان فارسی
 # توضیحات: این کد یک بلاکچین ساده شبیه بیت‌کوین را با متغیرها و توضیحات کاملاً فارسی پیاده‌سازی می‌کند.
